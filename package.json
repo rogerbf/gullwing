@@ -7,9 +7,8 @@
   "browser": "dist/gullwing.umd.js",
   "scripts": {
     "build": "NODE_ENV=build rollup -c",
-    "dev": "NODE_ENV=build rollup -c -w",
     "test": "NODE_ENV=test jest",
-    "pretest": "npm run build"
+    "watch:test": "NODE_ENV=test jest --watch"
   },
   "files": [
     "dist"
