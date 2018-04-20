@@ -1,0 +1,26 @@
+{
+  "name": "gullwing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/gullwing.cjs.js",
+  "module": "dist/gullwing.esm.js",
+  "browser": "dist/gullwing.umd.js",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [],
+  "author": "rogerbf <roger@bergfa.lk> (http://bergfa.lk/)",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-preset-env": "1.6.1",
+    "rollup": "0.58.1",
+    "rollup-plugin-babel": "3.0.3",
+    "rollup-plugin-commonjs": "9.1.0",
+    "rollup-plugin-node-resolve": "3.3.0"
+  }
+}

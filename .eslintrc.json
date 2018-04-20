@@ -1,0 +1,24 @@
+{
+  "parserOptions": {
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+  },
+  "rules": {
+    "quotes": [
+      "warn",
+      "backtick"
+    ],
+    "object-curly-spacing": [
+      "warn",
+      "always"
+    ],
+    "array-bracket-spacing": [
+      "warn",
+      "always"
+    ],
+    "template-curly-spacing": [
+      "warn",
+      "always"
+    ]
+  }
+}
