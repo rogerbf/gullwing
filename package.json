@@ -6,8 +6,10 @@
   "module": "dist/gullwing.esm.js",
   "browser": "dist/gullwing.umd.js",
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w"
+    "build": "NODE_ENV=build rollup -c",
+    "dev": "NODE_ENV=build rollup -c -w",
+    "test": "NODE_ENV=test jest",
+    "pretest": "npm run build"
   },
   "files": [
     "dist"
@@ -18,6 +20,7 @@
   "devDependencies": {
     "babel-core": "6.26.0",
     "babel-preset-env": "1.6.1",
+    "jest": "22.4.3",
     "rollup": "0.58.1",
     "rollup-plugin-babel": "3.0.3",
     "rollup-plugin-commonjs": "9.1.0",
