@@ -1,5 +1,7 @@
-import main from "../src/main"
+import gullwing from "../src/main"
 
-test(`it is defined`, () => {
-  expect(main).toBeDefined()
+describe(`gullwing`, () => {
+  it(`is defined`, () => expect(gullwing).toBeDefined())
+
+  it(`is a function`, () => expect(typeof gullwing).toBe(`function`))
 })
