@@ -11,6 +11,11 @@
             "modules": false
           }
         ]
+      ],
+      "plugins": [
+        "external-helpers",
+        "syntax-object-rest-spread",
+        "transform-object-rest-spread"
       ]
     },
     "test": {
