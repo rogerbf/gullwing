@@ -1,5 +1,5 @@
 const parseMatch = match => {
-  const [ parameter, ...transforms ] = match[0]
+  const [ parameter, ...transformers ] = match[0]
     .replace(/[{}\s]/g, ``)
     .trim()
     .split(`|`)
@@ -8,7 +8,7 @@ const parseMatch = match => {
     tag: match[0],
     index: match.index,
     parameter,
-    transforms,
+    transformers,
   }
 }
 

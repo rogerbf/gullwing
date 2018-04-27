@@ -20,13 +20,13 @@ describe(`identifyTags`, () => {
           tag: `{{ additional | cldrCardinal }}`,
           index: 9,
           parameter: `additional`,
-          transforms: [ `cldrCardinal` ],
+          transformers: [ `cldrCardinal` ],
         },
         {
           tag: `{{ | sum | cldrCardinal }}`,
           index: 49,
           parameter: ``,
-          transforms: [ `sum`, `cldrCardinal` ],
+          transformers: [ `sum`, `cldrCardinal` ],
         },
       ],
     }
@@ -43,7 +43,7 @@ describe(`identifyTags`, () => {
           tag: `{{ count }}`,
           index: 0,
           parameter: `count`,
-          transforms: [],
+          transformers: [],
         },
       ],
     }

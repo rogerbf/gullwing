@@ -1,17 +1,17 @@
 import { identifyTags } from "./identify-tags"
 
 const createDynamicTemplate = (
-  { template = ``, options = {}, transforms = {} } = {},
+  { template = ``, options = {}, transformers = {} } = {},
   { tags } = identifyTags({ template })
 ) => (parameters = {}) =>
   tags.reduce(
-    (interpolation, { tag, transforms: selectedTransforms, parameter }) => {
+    (interpolation, { tag, transformers: selectedTransformers, parameter }) => {
       return interpolation.replace(
         tag,
-        selectedTransforms.reduce(
+        selectedTransformers.reduce(
           (value, transform) =>
-            transform in transforms
-              ? transforms[transform]({
+            transform in transformers
+              ? transformers[transform]({
                   options: options[transform],
                   parameters,
                   parameter,
