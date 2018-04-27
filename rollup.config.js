@@ -6,7 +6,11 @@ import pkg from "./package.json"
 export default [
   {
     input: `src/main.js`,
-    output: { file: pkg.browser, format: `umd`, name: `gullwing` },
+    output: {
+      file: pkg.browser,
+      format: `umd`,
+      name: `gullwing`,
+    },
     plugins: [
       resolve(),
       commonjs(),
