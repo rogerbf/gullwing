@@ -1,6 +1,6 @@
 import { createDynamicTemplate } from "./create-dynamic-template"
 
-const ingest = ({ template = {}, transformers = {} } = {}) => {
+const gullwing = ({ template = {}, transformers = {} } = {}) => {
   return Object.entries(template).reduce(
     (accumulator, [ key, value ]) => ({
       ...accumulator,
@@ -11,12 +11,10 @@ const ingest = ({ template = {}, transformers = {} } = {}) => {
               ...value,
               transformers,
             })
-          : ingest({ template: value, transformers }),
+          : gullwing({ template: value, transformers }),
     }),
     {}
   )
 }
 
-export { createDynamicTemplate }
-
-export default ingest
+export default Object.assign(gullwing, { createDynamicTemplate })
