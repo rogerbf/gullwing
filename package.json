@@ -1,7 +1,7 @@
 {
   "name": "gullwing",
   "version": "1.0.0",
-  "description": "",
+  "description": "dynamic templates with optional transformation",
   "main": "dist/gullwing.cjs.js",
   "module": "dist/gullwing.esm.js",
   "browser": "dist/gullwing.umd.js",
@@ -10,10 +10,15 @@
     "test": "NODE_ENV=test jest",
     "watch:test": "NODE_ENV=test jest --watch"
   },
-  "files": [
-    "dist"
+  "files": ["dist"],
+  "keywords": [
+    "template",
+    "internationalization",
+    "i18n",
+    "locale",
+    "localization",
+    "globalization"
   ],
-  "keywords": [],
   "author": "rogerbf <roger@bergfa.lk> (http://bergfa.lk/)",
   "license": "MIT",
   "devDependencies": {
