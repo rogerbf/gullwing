@@ -9,9 +9,11 @@
     "build": "NODE_ENV=build rollup -c",
     "test": "NODE_ENV=test jest",
     "watch:test": "NODE_ENV=test jest --watch",
-    "prepublish": "npm run build"
+    "prepublish": "npm run test && npm run build"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "template",
     "internationalization",
