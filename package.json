@@ -1,6 +1,6 @@
 {
   "name": "gullwing",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "dynamic templates with optional transformation",
   "main": "dist/gullwing.cjs.js",
   "module": "dist/gullwing.esm.js",
