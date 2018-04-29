@@ -2,7 +2,7 @@
 
 ```javascript
 import gullwing from "gullwing"
-import cardinal from "./cardinal-transform"
+import cardinal from "gullwing-transform-cardinals"
 
 gullwing({
   template: `You have {{ additional | cardinal }} (total: {{ total | cardinal }}).`,
