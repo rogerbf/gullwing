@@ -1,33 +1,66 @@
-# gullwing
+<img src="gullwing.svg" alt="gullwing logo" height="100px" width="370px" />
+
+## usage
 
 ```javascript
-import gullwing from "gullwing"
-import cardinal from "gullwing-transform-cardinals"
+import { compile } from "gullwing"
 
-gullwing({
-  template: `You have {{ additional | cardinal }} (total: {{ total | cardinal }}).`,
-  options: {
-    cardinal: {
-      additional: {
-        one: `one new message`,
-        other: `{{ additional }} new messages`,
-      },
-      total: {
-        one: `{{ total }} message`,
-        other: `{{ total }} messages`,
-      },
-      rules: {
-        "pluralRule-count-one": `i = 1 and v = 0 @integer 1`,
-        "pluralRule-count-other":
-          ` @integer 0, 2~16, 100, 1000, 10000, 100000, 1000000, … @decimal 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0, …`,
-      },
+const source = {
+  _metadata: {
+    locale: `en`
+  },
+  things: {
+    _message: `Things: {{ total }}`,
+  },
+}
+
+const messages = compile(source)
+
+console.log(messages.things({ total: 3 }))
+// Things: 3
+```
+
+### using transformers
+
+```javascript
+import { compile } from "gullwing"
+
+const source = {
+  _configuration: {
+    join: `, `
+  },
+  fruits: {
+    _message: `{{ types | property(prop) }} types of fruit: {{ types | join }}.`,
+    _variables: {
+      prop: `length`,
     },
   },
-  transformers: { cardinal },
-})({
-  total: 41,
-  additional: 1,
-})
+}
 
-// You have one new message (total: 41 messages).
+const property = () => propertyName => value => value[propertyName]
+
+const join = defaultSeparator => (
+  separator = defaultSeparator
+) => list => list.join(separator)
+
+const messages = compile(source, { join, property })
+
+console.log(messages.fruits({ types: [ `Apple`, `Pear`, `Mango` ] }))
+// 3 types of fruit: Apple, Pear, Mango.
 ```
+
+## api
+
+### `compile(source[, transformers])`
+
+  - `source` \<Object\>
+  - `transformers` \<Object\>
+
+### `applyParameters(messages, parameters)`
+
+  - `messages` \<Object\>
+  - `parameters` \<Object\>
+
+## transformer
+
+`([ configuration ]) => ([, variables ]) => ([ value ]) => {}`

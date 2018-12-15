@@ -1,0 +1,10 @@
+{
+  "_configuration": {
+    "toLocaleString": "en"
+  },
+  "launches": {
+    "falcon": {
+      "_message": "Falcon 9 launches at {{ launchDate | toLocaleString }}"
+    }
+  }
+}

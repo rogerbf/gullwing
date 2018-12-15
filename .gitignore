@@ -1,4 +1,8 @@
-.DS_Store
 node_modules
+build
 dist
 coverage
+.cache
+.DS_Store
+gullwing-*.tgz
+package

@@ -1,0 +1,17 @@
+{
+  "_configuration": {
+    "cardinal": {
+      "locale": "en"
+    }
+  },
+  "requests": {
+    "_message": "{{ count | cardinal(rules, replace) }} received.",
+    "_variables": {
+      "rules": {
+        "one": "One request",
+        "other": "{{ count }} requests"
+      },
+      "replace": "{{ count }}"
+    }
+  }
+}

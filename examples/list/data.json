@@ -1,0 +1,16 @@
+{
+  "_configuration": {
+    "join": [", ", " and "]
+  },
+  "people": {
+    "recent": {
+      "_message": "{{ people | property(propertyName) }} recent: {{ people | join }}.",
+      "_variables": {
+        "propertyName": "length"
+      }
+    },
+    "family": {
+      "_message": "{{ familyMembers | join }}"
+    }
+  }
+}
