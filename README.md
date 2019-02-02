@@ -1,4 +1,4 @@
-<img src="gullwing.svg" alt="gullwing logo" height="100px" width="370px" />
+![gullwing logo](gullwing.svg?sanitize=true)
 
 ## usage
 
