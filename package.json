@@ -1,6 +1,6 @@
 {
   "name": "gullwing",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "a minimal and adaptable i18n/g11n library",
   "main": "build/gullwing.js",
   "unpkg": "build/gullwing.umd.js",
