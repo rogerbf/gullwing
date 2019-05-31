@@ -81,4 +81,39 @@ describe(`compile`, () => {
       `3 types of fruit: Apple, Pear, Mango.`,
     )
   })
+
+  test(`example: fruits (compact syntax)`, () => {
+    const source = {
+      _configuration: {
+        join: `, `,
+      },
+      fruits: {
+        _m: `{{ types | property(prop) }} types of fruit: {{ types | join }}.`,
+        _v: {
+          prop: `length`,
+        },
+      },
+    }
+
+    const property = () => propertyName => value => value[propertyName]
+
+    const join = defaultSeparator => (separator = defaultSeparator) => list =>
+      list.join(separator)
+
+    const messages = compile(source, { join, property })
+
+    expect(messages.fruits({ types: [`Apple`, `Pear`, `Mango`] })).toEqual(
+      `3 types of fruit: Apple, Pear, Mango.`,
+    )
+  })
+
+  test(`string values`, () => {
+    const source = {
+      a: `a`,
+    }
+
+    const messages = compile(source)
+
+    expect(messages.a()).toEqual(`a`)
+  })
 })
