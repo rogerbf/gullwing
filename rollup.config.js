@@ -1,9 +1,8 @@
-import nodeResolve from "rollup-plugin-node-resolve"
-import commonjs from "rollup-plugin-commonjs"
 import babel from "rollup-plugin-babel"
+import commonjs from "rollup-plugin-commonjs"
+import nodeResolve from "rollup-plugin-node-resolve"
 import replace from "rollup-plugin-replace"
 import { terser } from "rollup-plugin-terser"
-
 import pkg from "./package.json"
 
 export default [
@@ -19,7 +18,7 @@ export default [
       ...Object.keys(pkg.dependencies || {}),
       ...Object.keys(pkg.peerDependencies || {}),
     ],
-    plugins: [ babel() ],
+    plugins: [babel()],
   },
 
   // ES
@@ -34,7 +33,7 @@ export default [
       ...Object.keys(pkg.dependencies || {}),
       ...Object.keys(pkg.peerDependencies || {}),
     ],
-    plugins: [ babel() ],
+    plugins: [babel()],
   },
 
   // ES for Browsers
@@ -46,9 +45,7 @@ export default [
       indent: false,
     },
     plugins: [
-      nodeResolve({
-        jsnext: true,
-      }),
+      nodeResolve(),
       commonjs(),
       replace({
         "process.env.NODE_ENV": JSON.stringify(`production`),
@@ -74,9 +71,7 @@ export default [
       indent: false,
     },
     plugins: [
-      nodeResolve({
-        jsnext: true,
-      }),
+      nodeResolve(),
       commonjs(),
       babel({
         exclude: `node_modules/**`,
@@ -97,9 +92,7 @@ export default [
       indent: false,
     },
     plugins: [
-      nodeResolve({
-        jsnext: true,
-      }),
+      nodeResolve(),
       commonjs(),
       babel({
         exclude: `node_modules/**`,
