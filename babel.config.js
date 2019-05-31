@@ -6,9 +6,9 @@ module.exports = {
       `@babel/env`,
       {
         targets: {
-          browsers: [ `ie >= 11` ],
+          browsers: [`ie >= 11`],
         },
-        exclude: [ `transform-async-to-generator`, `transform-regenerator` ],
+        exclude: [`transform-async-to-generator`, `transform-regenerator`],
         modules: false,
         loose: true,
       },

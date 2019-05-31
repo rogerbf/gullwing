@@ -9,9 +9,9 @@ const message = (source, transformers, variables) => {
       operations
         .map(operation)
         .map(({ name, args }) =>
-          transformers[name](...args.map(name => variables[name]))
+          transformers[name](...args.map(name => variables[name])),
         ),
-      (value, next) => next(value)
+      (value, next) => next(value),
     )
 
     return (interpolation, parameters) =>
@@ -23,7 +23,7 @@ const message = (source, transformers, variables) => {
         interpolations.reduce(
           (interpolation, interpolate) =>
             interpolate(interpolation, parameters),
-          source
+          source,
         )
     : () => source
 }

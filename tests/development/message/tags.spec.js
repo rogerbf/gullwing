@@ -42,7 +42,7 @@ describe(`tags`, () => {
       {
         tag: `{{ value | first | second }}`,
         parameter: `value`,
-        operations: [ `first`, `second` ],
+        operations: [`first`, `second`],
       },
     ])
   })

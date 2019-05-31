@@ -23,8 +23,8 @@ describe(`applyParameters`, () => {
             c: `c`,
             d: `d`,
           },
-        }
-      )
+        },
+      ),
     ).toEqual({
       a: `a`,
       b: {
@@ -77,8 +77,8 @@ describe(`compile`, () => {
 
     const messages = compile(source, { join, property })
 
-    expect(messages.fruits({ types: [ `Apple`, `Pear`, `Mango` ] })).toEqual(
-      `3 types of fruit: Apple, Pear, Mango.`
+    expect(messages.fruits({ types: [`Apple`, `Pear`, `Mango`] })).toEqual(
+      `3 types of fruit: Apple, Pear, Mango.`,
     )
   })
 })

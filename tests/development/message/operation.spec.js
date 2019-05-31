@@ -15,21 +15,21 @@ describe(`operation`, () => {
   test(`'transformer(a)'`, () => {
     expect(operation(`transformer(a)`)).toEqual({
       name: `transformer`,
-      args: [ `a` ],
+      args: [`a`],
     })
   })
 
   test(`'transformer(a, b, c)'`, () => {
     expect(operation(`transformer(a, b, c)`)).toEqual({
       name: `transformer`,
-      args: [ `a`, `b`, `c` ],
+      args: [`a`, `b`, `c`],
     })
   })
 
   test(`'transformer(a,b,c)'`, () => {
     expect(operation(`transformer(a,b,c)`)).toEqual({
       name: `transformer`,
-      args: [ `a`, `b`, `c` ],
+      args: [`a`, `b`, `c`],
     })
   })
 })
