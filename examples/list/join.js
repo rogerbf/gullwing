@@ -1,7 +1,7 @@
-module.exports = (defaultSeparators = [ ` ` ]) => (
-  separators = defaultSeparators
+module.exports = (defaultSeparators = [` `]) => (
+  separators = defaultSeparators,
 ) => value => {
-  const [ first, second ] = separators
+  const [first, second] = separators
 
   switch (separators.length) {
     case 1:
