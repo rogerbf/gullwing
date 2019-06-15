@@ -1,4 +1,4 @@
-import applyParameters from "./apply-parameters"
+import { call } from "call-tree"
 import message from "./message/message"
 
 const compile = (transformers, source) =>
@@ -23,5 +23,5 @@ export default (
   { _metadata, _configuration, ...source } = {}, // eslint-disable-line
   transformers = {},
 ) => {
-  return compile(applyParameters(transformers, _configuration), source)
+  return compile(call(transformers, _configuration), source)
 }

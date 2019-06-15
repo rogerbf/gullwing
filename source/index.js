@@ -1,4 +1,4 @@
 import compile from "./compile"
-import applyParameters from "./apply-parameters"
+import { call } from "call-tree"
 
-export { compile, applyParameters }
+export { compile, call }

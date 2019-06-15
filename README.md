@@ -7,7 +7,7 @@ import { compile } from "gullwing"
 
 const source = {
   _metadata: {
-    locale: `en`
+    locale: `en`,
   },
   things: {
     _message: `Things: {{ total }}`,
@@ -27,7 +27,7 @@ import { compile } from "gullwing"
 
 const source = {
   _configuration: {
-    join: `, `
+    join: `, `,
   },
   fruits: {
     _message: `{{ types | property(prop) }} types of fruit: {{ types | join }}.`,
@@ -39,13 +39,12 @@ const source = {
 
 const property = () => propertyName => value => value[propertyName]
 
-const join = defaultSeparator => (
-  separator = defaultSeparator
-) => list => list.join(separator)
+const join = defaultSeparator => (separator = defaultSeparator) => list =>
+  list.join(separator)
 
 const messages = compile(source, { join, property })
 
-console.log(messages.fruits({ types: [ `Apple`, `Pear`, `Mango` ] }))
+console.log(messages.fruits({ types: [`Apple`, `Pear`, `Mango`] }))
 // 3 types of fruit: Apple, Pear, Mango.
 ```
 
@@ -53,13 +52,13 @@ console.log(messages.fruits({ types: [ `Apple`, `Pear`, `Mango` ] }))
 
 ### `compile(source[, transformers])`
 
-  - `source` \<Object\>
-  - `transformers` \<Object\>
+- `source` \<Object\>
+- `transformers` \<Object\>
 
-### `applyParameters(messages, parameters)`
+### `call(messages, parameters)`
 
-  - `messages` \<Object\>
-  - `parameters` \<Object\>
+- `messages` \<Object\>
+- `parameters` \<Object\>
 
 ## transformer
 

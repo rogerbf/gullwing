@@ -1,39 +1,4 @@
-import { compile, applyParameters } from "../"
-
-describe(`applyParameters`, () => {
-  test(`applyParameters()`, () => {
-    expect(applyParameters()).toEqual({})
-  })
-
-  test(`applyParameters(tree, parameters)`, () => {
-    const fn = jest.fn(value => value)
-
-    expect(
-      applyParameters(
-        {
-          a: fn,
-          b: {
-            c: fn,
-            d: fn,
-          },
-        },
-        {
-          a: `a`,
-          b: {
-            c: `c`,
-            d: `d`,
-          },
-        },
-      ),
-    ).toEqual({
-      a: `a`,
-      b: {
-        c: `c`,
-        d: `d`,
-      },
-    })
-  })
-})
+import { compile } from "../"
 
 describe(`compile`, () => {
   test(`compile()`, () => {
