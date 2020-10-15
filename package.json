@@ -38,6 +38,10 @@
     "call-tree": "3.0.0",
     "esm": "3.2.25"
   },
+  "files": [
+    "index.js",
+    "source"
+  ],
   "directories": {
     "example": "examples",
     "test": "tests"
