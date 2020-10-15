@@ -1,6 +1,6 @@
-const { compile } = require(`../../build/gullwing`)
-const cardinal = require(`./cardinal`)
-const source = require(`./data.json`)
+const { compile } = require("../../build/gullwing")
+const cardinal = require("./cardinal")
+const source = require("./data.json")
 
 const messages = compile(source, { cardinal })
 

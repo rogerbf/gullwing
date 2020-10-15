@@ -1,2 +1,2 @@
-module.exports = defaultProperty => (property = defaultProperty) => value =>
+module.exports = (defaultProperty) => (property = defaultProperty) => (value) =>
   value[property]

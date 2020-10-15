@@ -1,25 +1,17 @@
 {
   "name": "gullwing",
-  "version": "3.0.1",
-  "description": "a minimal and adaptable i18n/g11n library",
-  "main": "build/gullwing.js",
-  "unpkg": "build/gullwing.umd.js",
-  "module": "build/gullwing.es.js",
-  "files": [
-    "build"
-  ],
+  "version": "4.0.0",
+  "description": "A minimal string interpolation library",
+  "main": "index.js",
+  "module": "source/index.js",
   "scripts": {
-    "build": "rollup -c",
-    "clean": "rimraf build coverage .cache dist package gullwing-*.tgz",
-    "prepare": "npm run clean && npm test",
-    "pretest": "npm run lint && npm run build",
-    "test": "jest",
-    "test:watch": "npm test -- --watch",
-    "test:coverage": "npm test -- --coverage",
-    "test:development": "NODE_ENV=development jest",
-    "test:watch:development": "npm run test:development -- --watch",
-    "test:coverage:development": "npm run test:development -- --coverage",
-    "lint": "eslint --fix . && echo 'Done linting.'"
+    "lint": "eslint --fix .",
+    "format": "prettier --write '**/*.js'",
+    "pretest": "npm run format && npm run lint",
+    "test": "ava",
+    "coverage": "c8 --reporter=html --reporter=text --exclude tests npm run test",
+    "develop": "ava --watch",
+    "prepare": "npm run test"
   },
   "keywords": [
     "template",
@@ -29,34 +21,22 @@
     "globalization",
     "internationalization",
     "localization",
-    "localize"
+    "localize",
+    "string",
+    "interpolation"
   ],
   "author": "rogerbf <roger@bergfa.lk> (http://bergfa.lk/)",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "7.5.5",
-    "@babel/plugin-external-helpers": "7.2.0",
-    "@babel/plugin-proposal-object-rest-spread": "7.5.5",
-    "@babel/plugin-syntax-object-rest-spread": "7.2.0",
-    "@babel/plugin-transform-modules-commonjs": "7.5.0",
-    "@babel/preset-env": "7.5.5",
-    "babel-eslint": "10.0.2",
-    "babel-jest": "24.9.0",
-    "eslint": "6.2.2",
-    "eslint-config-prettier": "6.1.0",
-    "eslint-plugin-prettier": "3.1.0",
-    "jest": "24.9.0",
-    "prettier": "1.18.2",
-    "rimraf": "3.0.0",
-    "rollup": "1.20.2",
-    "rollup-plugin-babel": "4.3.3",
-    "rollup-plugin-commonjs": "10.0.2",
-    "rollup-plugin-node-resolve": "5.2.0",
-    "rollup-plugin-replace": "2.2.0",
-    "rollup-plugin-terser": "5.1.1"
+    "ava": "3.13.0",
+    "c8": "7.3.4",
+    "eslint": "7.11.0",
+    "prettier": "2.1.2",
+    "sinon": "9.2.0"
   },
   "dependencies": {
-    "call-tree": "2.2.1"
+    "call-tree": "3.0.0",
+    "esm": "3.2.25"
   },
   "directories": {
     "example": "examples",
@@ -69,5 +49,10 @@
   "bugs": {
     "url": "https://github.com/rogerbf/gullwing/issues"
   },
-  "homepage": "https://github.com/rogerbf/gullwing#readme"
+  "homepage": "https://github.com/rogerbf/gullwing#readme",
+  "ava": {
+    "require": [
+      "esm"
+    ]
+  }
 }

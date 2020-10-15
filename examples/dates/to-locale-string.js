@@ -1,2 +1,2 @@
-module.exports = defaultLocale => (locale = defaultLocale) => utcDate =>
+module.exports = (defaultLocale) => (locale = defaultLocale) => (utcDate) =>
   new Date(utcDate).toLocaleString(locale)

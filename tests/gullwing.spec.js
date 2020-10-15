@@ -1,84 +1,89 @@
-import { compile } from "../"
+const test = require("ava")
+const { compile } = require("../source/compile.js")
 
-describe(`compile`, () => {
-  test(`compile()`, () => {
-    expect(compile()).toEqual({})
-  })
+test("compile()", (t) => {
+  const expected = {}
+  const actual = compile()
 
-  test(`example: things`, () => {
-    const source = {
-      things: {
-        _message: `Things: {{ total }}`,
+  t.deepEqual(actual, expected)
+})
+
+test("example: things", (t) => {
+  const source = {
+    things: {
+      _message: "Things: {{ total }}",
+    },
+    stuff: {
+      _message: "Stuff",
+    },
+  }
+
+  const messages = compile(source)
+
+  t.is(messages.things({ total: 3 }), "Things: 3")
+  t.is(messages.things(), "Things: ")
+  t.is(messages.stuff(), "Stuff")
+})
+
+test("example: fruits", (t) => {
+  const source = {
+    _configuration: {
+      join: ", ",
+    },
+    fruits: {
+      _message:
+        "{{ types | property(prop) }} types of fruit: {{ types | join }}.",
+      _variables: {
+        prop: "length",
       },
-      stuff: {
-        _message: `Stuff`,
+    },
+  }
+
+  const property = () => (propertyName) => (value) => value[propertyName]
+
+  const join = (defaultSeparator) => (separator = defaultSeparator) => (list) =>
+    list.join(separator)
+
+  const messages = compile(source, { join, property })
+
+  t.is(
+    messages.fruits({ types: ["Apple", "Pear", "Mango"] }),
+    "3 types of fruit: Apple, Pear, Mango."
+  )
+})
+
+test("example: fruits (compact syntax)", (t) => {
+  const source = {
+    _configuration: {
+      join: ", ",
+    },
+    fruits: {
+      _m: "{{ types | property(prop) }} types of fruit: {{ types | join }}.",
+      _v: {
+        prop: "length",
       },
-    }
+    },
+  }
 
-    const messages = compile(source)
+  const property = () => (propertyName) => (value) => value[propertyName]
 
-    expect(messages.things({ total: 3 })).toEqual(`Things: 3`)
-    expect(messages.things()).toEqual(`Things: `)
-    expect(messages.stuff()).toEqual(`Stuff`)
-  })
+  const join = (defaultSeparator) => (separator = defaultSeparator) => (list) =>
+    list.join(separator)
 
-  test(`example: fruits`, () => {
-    const source = {
-      _configuration: {
-        join: `, `,
-      },
-      fruits: {
-        _message: `{{ types | property(prop) }} types of fruit: {{ types | join }}.`,
-        _variables: {
-          prop: `length`,
-        },
-      },
-    }
+  const messages = compile(source, { join, property })
 
-    const property = () => propertyName => value => value[propertyName]
+  t.is(
+    messages.fruits({ types: ["Apple", "Pear", "Mango"] }),
+    "3 types of fruit: Apple, Pear, Mango."
+  )
+})
 
-    const join = defaultSeparator => (separator = defaultSeparator) => list =>
-      list.join(separator)
+test("string values", (t) => {
+  const source = {
+    a: "a",
+  }
 
-    const messages = compile(source, { join, property })
+  const messages = compile(source)
 
-    expect(messages.fruits({ types: [`Apple`, `Pear`, `Mango`] })).toEqual(
-      `3 types of fruit: Apple, Pear, Mango.`,
-    )
-  })
-
-  test(`example: fruits (compact syntax)`, () => {
-    const source = {
-      _configuration: {
-        join: `, `,
-      },
-      fruits: {
-        _m: `{{ types | property(prop) }} types of fruit: {{ types | join }}.`,
-        _v: {
-          prop: `length`,
-        },
-      },
-    }
-
-    const property = () => propertyName => value => value[propertyName]
-
-    const join = defaultSeparator => (separator = defaultSeparator) => list =>
-      list.join(separator)
-
-    const messages = compile(source, { join, property })
-
-    expect(messages.fruits({ types: [`Apple`, `Pear`, `Mango`] })).toEqual(
-      `3 types of fruit: Apple, Pear, Mango.`,
-    )
-  })
-
-  test(`string values`, () => {
-    const source = {
-      a: `a`,
-    }
-
-    const messages = compile(source)
-
-    expect(messages.a()).toEqual(`a`)
-  })
+  t.is(messages.a(), "a")
 })

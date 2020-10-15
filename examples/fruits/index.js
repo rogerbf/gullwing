@@ -1,23 +1,24 @@
-const { compile } = require(`../../`)
+const { compile } = require("../../")
 
 const source = {
   _configuration: {
-    join: `, `,
+    join: ", ",
   },
   fruits: {
-    _message: `{{ types | property(prop) }} types of fruit: {{ types | join }}.`,
+    _message:
+      "{{ types | property(prop) }} types of fruit: {{ types | join }}.",
     _variables: {
-      prop: `length`,
+      prop: "length",
     },
   },
 }
 
-const property = () => propertyName => value => value[propertyName]
+const property = () => (propertyName) => (value) => value[propertyName]
 
-const join = defaultSeparator => (separator = defaultSeparator) => list =>
+const join = (defaultSeparator) => (separator = defaultSeparator) => (list) =>
   list.join(separator)
 
 const messages = compile(source, { join, property })
 
-console.log(messages.fruits({ types: [`Apple`, `Pear`, `Mango`] }))
+console.log(messages.fruits({ types: ["Apple", "Pear", "Mango"] }))
 // 3 types of fruit: Apple, Pear, Mango.

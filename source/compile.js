@@ -1,27 +1,25 @@
-import { call } from "call-tree"
-import message from "./message/message"
+import { call } from "./call.js"
+import { message } from "./message.js"
 
-const compile = (transformers, source) =>
-  Object.entries(source).reduce((acc, [key, value]) => {
-    if (typeof value === "object") {
-      const { _message, _m, _variables, _v, ...rest } = value
+const _compile = (source = {}, transformers) => {
+  const { _message, _m } = source
 
-      return Object.assign(acc, {
-        [key]: Object.assign(
-          _message || _m
-            ? message(_message || _m, transformers, _variables || _v)
-            : {},
-          compile(transformers, rest),
-        ),
-      })
-    } else {
-      return Object.assign(acc, { [key]: () => value })
-    }
-  }, {})
+  return _message || _m
+    ? message(_message || _m, transformers, source._variables || source._v)
+    : typeof source === "object"
+    ? Object.entries(source).reduce(
+        (acc, [key, value]) =>
+          Object.assign(acc, {
+            [key]: _compile(value, transformers),
+          }),
+        {}
+      )
+    : () => source
+}
 
-export default (
-  { _metadata, _configuration, ...source } = {}, // eslint-disable-line
-  transformers = {},
+export const compile = (
+  { _configuration, ...source } = {},
+  transformers = {}
 ) => {
-  return compile(call(transformers, _configuration), source)
+  return _compile(source, call(transformers, _configuration))
 }

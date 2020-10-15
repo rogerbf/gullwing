@@ -1,6 +1,6 @@
-module.exports = (defaultSeparators = [` `]) => (
-  separators = defaultSeparators,
-) => value => {
+module.exports = (defaultSeparators = [" "]) => (
+  separators = defaultSeparators
+) => (value) => {
   const [first, second] = separators
 
   switch (separators.length) {
@@ -14,6 +14,6 @@ module.exports = (defaultSeparators = [` `]) => (
             .concat(second + value[value.length - 1])
         : value.join()
     default:
-      return value.join(` `)
+      return value.join(" ")
   }
 }

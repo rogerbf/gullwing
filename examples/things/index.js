@@ -1,11 +1,11 @@
-const { compile } = require(`../../`)
+const { compile } = require("../../")
 
 const source = {
   things: {
-    _message: `Things: {{ total }}`,
+    _message: "Things: {{ total }}",
   },
   stuff: {
-    _message: `Stuff`,
+    _message: "Stuff",
   },
 }
 

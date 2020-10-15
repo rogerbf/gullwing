@@ -1,19 +1,11 @@
 {
+  "extends": ["eslint:recommended"],
   "env": {
-    "browser": true,
-    "es6": true,
-    "commonjs": true,
-    "jest": true,
-    "node": true
+    "node": true,
+    "es6": true
   },
-  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
   "parserOptions": {
-    "sourceType": "module",
-    "ecmaVersion": 2018
-  },
-  "rules": {
-    "linebreak-style": ["error", "unix"],
-    "no-console": "off"
-  },
-  "parser": "babel-eslint"
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  }
 }
